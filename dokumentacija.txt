@@ -1,0 +1,24 @@
+Dominik Brdar, Paralelno programiranje 2022. vježba 2
+
+Opis programa:
+- Program je implementiran za paralelno izvođenje na principu 1 master - n slaves;
+-> Stoga se ne može izvršavati samo s jednim procesorom (osim ako se ne koristi višedretvenost)
+
+- MASTER: 	=> obavlja posao dohvata ulaznih podataka (potez osobe), 
+			=> generira prvu razinu poteza računala (zadatke)
+			=> raspoređuje zadatke slugama (bez provjere koji ima više resursa)
+			=> prikuplja (agregira) rezultate sluga te bira najbolji sljedeći potez 
+			
+- SLAVE:	=> obrađuje zadane zadatke (zadaci se skupljaju u red poruka)
+			=> evaluira ploču (je li došlo do pobjede ili nije)
+			=> generira nove zadatke (sljedeću razinu poteza)
+
+Analiza vremena:
+Mjerenja pokazuju da program ima značajnije ubrzanje kada se koriste 4 jezgre umjesto 3,
+Sa 2 i 3 jezgre program se izvršava približno jednakom brzinom.
+
+vrijeme (ms)	br. jezgri	
+1800-2000		2
+1600-1800		3
+600-800			4
+
